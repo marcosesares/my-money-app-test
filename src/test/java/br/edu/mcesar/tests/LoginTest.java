@@ -23,7 +23,7 @@ public class LoginTest extends BaseTest {
 	public LoginTest() {
 		loginHelper = LoginHelper.getInstance();
 		dashboardHelper = DashboardHelper.getInstance();
-		user = new User("Marcos César", "marcosesares@gmail.com", "a2@MyMoney211");
+		user = new User("Marcos Cesar", "marcosesares@gmail.com", "a2@MyMoney211");
 	}
 
 	@BeforeAll
