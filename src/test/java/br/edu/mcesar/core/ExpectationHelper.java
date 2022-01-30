@@ -1,6 +1,6 @@
 package br.edu.mcesar.core;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
 
 import br.edu.mcesar.core.logger.StepLogger;
@@ -16,6 +16,6 @@ public class ExpectationHelper {
 		String tagName = elementToBeDisplayed.getTagName();
 		String message = ValidationsHelper.getDisplayedValidation(elementText != null ? elementText : tagName);
         StepLogger.subVerification(message);
-		Assert.assertSame(message, targetElement, elementToBeDisplayed);
+		Assertions.assertSame(targetElement, elementToBeDisplayed, message);
     }
 }
