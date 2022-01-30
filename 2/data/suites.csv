@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Sun Jan 30 23:08:28 GMT 2022","Sun Jan 30 23:08:28 GMT 2022","1","","br.edu.mcesar.tests.LoginTest","","br.edu.mcesar.tests.LoginTest","","LoginTest",""
