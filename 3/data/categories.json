@@ -1,0 +1,26 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "children" : [ {
+    "name" : "Test defects",
+    "children" : [ {
+      "name" : "Could not start a new session. Response code 500. Message: Process unexpectedly closed with status 1\nBuild info: version: '4.1.1', revision: 'e8fcc2cecf'\nSystem info: host: 'fv-az173-150', ip: '10.1.1.97', os.name: 'Linux', os.arch: 'amd64', os.version: '5.11.0-1027-azure', java.version: '1.8.0_322'\nDriver info: org.openqa.selenium.firefox.FirefoxDriver\nCommand: [null, newSession {capabilities=[Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:debuggerAddress: true, moz:firefoxOptions: {}}], desiredCapabilities=Capabilities {acceptInsecureCerts: true, browserName: firefox, moz:debuggerAddress: true, moz:firefoxOptions: {}}}]",
+      "children" : [ {
+        "name" : "LoginTest",
+        "uid" : "52c2792fc0cb444f",
+        "parentUid" : "057b9f70a7e1b9f7bbbb3ed52475ae24",
+        "status" : "broken",
+        "time" : {
+          "start" : 1643584421029,
+          "stop" : 1643584421029,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "057b9f70a7e1b9f7bbbb3ed52475ae24"
+    } ],
+    "uid" : "bdbf199525818fae7a8651db9eafe741"
+  } ],
+  "name" : "categories"
+}
