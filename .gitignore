@@ -1,6 +1,6 @@
+.classpath
 /target
 /allure-results
 *.class
 .project
 .settings
-.classpath

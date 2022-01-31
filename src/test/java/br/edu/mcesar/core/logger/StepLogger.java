@@ -10,6 +10,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 import io.qameta.allure.Allure;
+import io.qameta.allure.Attachment;
 
 public class StepLogger {
 
@@ -79,8 +80,9 @@ public class StepLogger {
 		commonLogger("Sub-Verification", verificationDescription);
 	}
 
-	public static void takeScreenShot(String attachmentName) {
-		Allure.addAttachment(attachmentName, ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BASE64));
+	@Attachment(value = "{0}", type = "image/png")
+	public static byte[] takeScreenShot(String attachmentName) {
+		return ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
 	}
 
 	public static void commonLogger(String operation, String step) {
