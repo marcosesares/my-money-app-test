@@ -23,6 +23,9 @@ jobs:
         with:
           java-version: 8
 
+      - name: Install dependencies
+        run: mvn dependency:go-offline compile compiler:testCompile
+
       - name: Run Test
         if: always()
         run: mvn package
