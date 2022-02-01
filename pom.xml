@@ -7,6 +7,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.resources.plugin.version>3.2.0</maven.resources.plugin.version>
 		<java.version>8</java.version>
 		<aspectj.version>1.8.10</aspectj.version>
 		<slf4j.version>2.0.0-alpha6</slf4j.version>
@@ -21,6 +24,10 @@
 		<allure.maven.version>2.10.0</allure.maven.version>
 		<junit.platform.surefire.provider.version>1.1.0</junit.platform.surefire.provider.version>
 		<slf4j.version>2.0.0-alpha6</slf4j.version>
+		<junit.platform.engine.version>1.8.2</junit.platform.engine.version>
+		<log4j.core.version>2.17.1</log4j.core.version>
+		<selenium.version>4.1.1</selenium.version>
+		<commons.io.version>2.11.0</commons.io.version>
 	</properties>
 
 	<dependencies>
@@ -28,42 +35,42 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-firefox-driver</artifactId>
-			<version>4.1.1</version>
+			<version>${selenium.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-support</artifactId>
-			<version>4.1.1</version>
+			<version>${selenium.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>4.1.1</version>
+			<version>${selenium.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-chrome-driver</artifactId>
-			<version>4.1.1</version>
+			<version>${selenium.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>2.11.0</version>
+			<version>${commons.io.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>2.17.1</version>
+			<version>${log4j.core.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -107,7 +114,7 @@
       <dependency>
          <groupId>org.junit.platform</groupId>
          <artifactId>junit-platform-engine</artifactId>
-         <version>1.8.2</version>
+         <version>${junit.platform.engine.version}</version>
          <scope>test</scope>
       </dependency>
 <dependency>
@@ -130,6 +137,15 @@
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resources.plugin.version}</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>
 			<plugin>

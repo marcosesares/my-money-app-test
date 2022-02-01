@@ -17,10 +17,10 @@ public class BaseTest {
 	private TestInfo testInfo;
 
 	@AfterEach
-	public void finaliza() throws IOException {
+	public void finalized() throws IOException {
 		TakesScreenshot ss = (TakesScreenshot) getDriver();
-		File arquivo = ss.getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(arquivo,
+		File archive = ss.getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(archive,
 				new File("target" + File.separator + "screenshot" + File.separator + testInfo.getDisplayName() + ".jpg"));
 
 		if (Properties.CLOSE_BROWSER) {
@@ -28,11 +28,7 @@ public class BaseTest {
 		}
 	}
 
-	public TestInfo getTestInfo() {
-		return testInfo;
-	}
-
-	public void setTestInfo(TestInfo testInfo) {
+	protected void setTestInfo(TestInfo testInfo) {
 		this.testInfo = testInfo;
 	}
 

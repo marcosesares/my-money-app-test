@@ -4,3 +4,5 @@
 *.class
 .project
 .settings
+.idea/*
+my-money-app-test.iml

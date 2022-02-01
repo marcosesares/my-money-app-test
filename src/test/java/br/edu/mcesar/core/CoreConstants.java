@@ -1,8 +1,11 @@
 package br.edu.mcesar.core;
 
+import java.time.Duration;
+
 public class CoreConstants {
 
 	public static TIMEOUTS DEFAULT_TIMEOUT = CoreConstants.TIMEOUTS.xl;
+	public static Duration DEFAULT_TIMEOUT_DURATION = Duration.ofMillis(DEFAULT_TIMEOUT.getValor());
 
 	private CoreConstants() {
 	}
