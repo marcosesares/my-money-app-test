@@ -7,7 +7,7 @@ on:
 jobs:
   autotests:
     name: Run tests and generate Allure Report
-    runs-on: Ubuntu-20.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
 
@@ -22,9 +22,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 8
-
-      - name: Install dependencies
-        run: mvn dependency:go-offline compile compiler:testCompile
 
       - name: Run Test
         if: always()
