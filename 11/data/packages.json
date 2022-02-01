@@ -1,0 +1,22 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "children" : [ {
+    "name" : "br.edu.mcesar.tests.LoginTest",
+    "children" : [ {
+      "name" : "LoginTest",
+      "uid" : "f0b170824b4e6d68",
+      "parentUid" : "0209803b814341449e0bfc1c17747f6b",
+      "status" : "broken",
+      "time" : {
+        "start" : 1643748720571,
+        "stop" : 1643748720573,
+        "duration" : 2
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "br.edu.mcesar.tests.LoginTest"
+  } ],
+  "name" : "packages"
+}
