@@ -17,7 +17,8 @@ public class DriverFactory {
 
 	public static WebDriver getDriver() {
 		if (driver == null) {
-			switch (Properties.browser) {
+			System.setProperty("webdriver.chrome.whitelistedIps", "");
+			switch (Properties.browser) {			
 			case FIREFOX: driver = new FirefoxDriver(); break;
 			case CHROME: driver = new ChromeDriver(); break;
 			case IE:
