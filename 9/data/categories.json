@@ -1,0 +1,26 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "children" : [ {
+    "name" : "Test defects",
+    "children" : [ {
+      "name" : "Could not start a new session. Possible causes are invalid address of the remote server or browser start-up failure.",
+      "children" : [ {
+        "name" : "LoginTest",
+        "uid" : "508edece34e72e77",
+        "parentUid" : "214201a0515b5b59a0c3c97a39f828ec",
+        "status" : "broken",
+        "time" : {
+          "start" : 1643748076896,
+          "stop" : 1643748076897,
+          "duration" : 1
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "214201a0515b5b59a0c3c97a39f828ec"
+    } ],
+    "uid" : "bdbf199525818fae7a8651db9eafe741"
+  } ],
+  "name" : "categories"
+}
