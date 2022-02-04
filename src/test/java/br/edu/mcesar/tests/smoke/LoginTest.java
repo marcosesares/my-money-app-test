@@ -31,12 +31,8 @@ public class LoginTest {
 	static void setup() {
 		Browser chrome = BrowserBuilder.chrome().build();
 		Browser firefox = BrowserBuilder.firefox().build();
-		Browser edge = BrowserBuilder.edge().build();
-		Browser opera = BrowserBuilder.opera().build();
 		seleniumJupiter.addBrowsers(chrome);
 		seleniumJupiter.addBrowsers(firefox);
-		seleniumJupiter.addBrowsers(edge);
-		seleniumJupiter.addBrowsers(opera);
 	}
 
 	@TestTemplate
