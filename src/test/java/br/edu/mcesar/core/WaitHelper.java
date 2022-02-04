@@ -1,24 +1,25 @@
 package br.edu.mcesar.core;
 
 import static br.edu.mcesar.core.CoreConstants.DEFAULT_TIMEOUT;
-import static br.edu.mcesar.core.DriverFactory.getDriver;
 
 import java.time.Duration;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WaitHelper {
 
-	private WaitHelper() {
+	private final Duration TIMEOUT = Duration.ofMillis(DEFAULT_TIMEOUT.getValor());
+	private WebDriver driver;
+
+	public WaitHelper(WebDriver webDriver) {
+		driver = webDriver;
 	}
 
-	private static final Duration TIMEOUT = Duration.ofMillis(DEFAULT_TIMEOUT.getValor());
-
-	public static WebElement waitForElementToBeDisplayed(WebElement element) {
-		WebDriverWait wait = new WebDriverWait(getDriver(), TIMEOUT);
+	public WebElement waitForElementToBeDisplayed(WebElement element) {
+		WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
 		return wait.until(ExpectedConditions.visibilityOf(element));
 	}
-
 }

@@ -1,16 +1,17 @@
 package br.edu.mcesar.core.logger;
 
-import static br.edu.mcesar.core.DriverFactory.getDriver;
-
 import java.util.Date;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+//import io.qameta.allure.Allure;
+//import io.qameta.allure.Attachment;
+import org.openqa.selenium.WebDriver;
 
-import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
 
 public class StepLogger {
 
@@ -22,19 +23,21 @@ public class StepLogger {
 	static String logMessages = "";
 	static Boolean eachStepScreenshot = 
 			System.getenv("EACH_STEP_SCREENSHOT") != null ? Boolean.valueOf(System.getenv("EACH_STEP_SCREENSHOT")) : true;
+	private static WebDriver driver;
 
-	public StepLogger() {
+	private StepLogger() {
 	}
 
-	public static void setCaseId(Integer theCaseId) {
+	public static void setCaseId(Integer theCaseId, WebDriver webDriver) {
+		driver = webDriver;
 		testCaseId = theCaseId;
 		logger = LogManager.getLogger("C" + theCaseId);
-		logger.debug(logMessages);
 		id = 1;
 		logMessages = "";
 		testStart = new Date().getTime();
 	}
 
+	@Step("Step: {stepName}")
 	public static void step(String stepName) {
 		String operation = "Pre-Condition";
 		if (testCaseId != null) {
@@ -43,46 +46,51 @@ public class StepLogger {
 
 		commonLogger(operation, stepName);
 
-		if (eachStepScreenshot) {
-			takeScreenShot("Step: " + stepName);
-		}
+//		if (eachStepScreenshot) {
+//			takeScreenShot("Step" + stepName);
+//		}
 	}
 
-	public static void stepId(Integer optionalId) {
-		id = optionalId != null ? optionalId : id + 1;
+	@Step("Step: {stepId}")
+	public static void stepId(Integer stepId) {
+		id = stepId != null ? stepId : id + 1;
 		commonLogger("Step Id", id.toString());
 	}
 
+	@Step("Verification: {verificationDescription}")
 	public static void verification(String verificationDescription) {
 		commonLogger("Verification", verificationDescription);
-
-		if (eachStepScreenshot) {
-			takeScreenShot("Verification: " + verificationDescription);
-		}
 	}
 
+	@Step("Pre-Condition: {preConditionDescription}")
 	public static void preCondition(String preConditionDescription) {
 		commonLogger("Pre-Condition", preConditionDescription);
 	}
 
+	@Step("{postConditionDescription}")
 	public static void postCondition(String postConditionDescription) {
 		commonLogger("Post-Condition", postConditionDescription);
 	}
 	
+	@Step("Sub-step: {stepName}")
 	public static void subStep(String stepName) {
 		commonLogger("Sub-Step", stepName);
 		if (eachStepScreenshot) {
-			takeScreenShot("Sub-step: " + stepName);
+			takeScreenShot("Sub-step" + stepName);
 		}
 	}
 
+	@Step("Sub-Verification: {verificationDescription}")
 	public static void subVerification(String verificationDescription) {
 		commonLogger("Sub-Verification", verificationDescription);
+		if (eachStepScreenshot) {
+			takeScreenShot("Sub-Verification" + verificationDescription);
+		}
 	}
 
 	@Attachment(value = "{0}", type = "image/png")
 	public static byte[] takeScreenShot(String attachmentName) {
-		return ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
+		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 	}
 
 	public static void commonLogger(String operation, String step) {
@@ -96,9 +104,5 @@ public class StepLogger {
 		} else {
 			logMessages += message+"\n";
 		}
-	}
-
-	public static void feature(String featureName) {
-		Allure.feature(featureName);
 	}
 }
