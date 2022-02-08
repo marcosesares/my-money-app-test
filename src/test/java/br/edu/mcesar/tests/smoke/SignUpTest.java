@@ -32,7 +32,7 @@ public class SignUpTest {
 		signUpHelper = new SignUpHelper(driver);
 		StepLogger.setCaseId(1002, driver);
 		StepLogger.preCondition("Navigate to My Money App.");
-		signUpHelper.openMyMoneyApp(driver);
+		signUpHelper.openURL(driver);
 		StepLogger.verification("Verify My Money App logo is displayed.");
 		signUpHelper.verifyAppLogoDisplayedStatus();
 	}

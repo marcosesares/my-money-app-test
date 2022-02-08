@@ -4,11 +4,13 @@ import java.util.Date;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 //import io.qameta.allure.Allure;
 //import io.qameta.allure.Attachment;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
@@ -43,12 +45,7 @@ public class StepLogger {
 		if (testCaseId != null) {
 			operation = "Step";
 		}
-
 		commonLogger(operation, stepName);
-
-//		if (eachStepScreenshot) {
-//			takeScreenShot("Step" + stepName);
-//		}
 	}
 
 	@Step("Step: {stepId}")
@@ -79,7 +76,7 @@ public class StepLogger {
 			takeScreenShot("Sub-step" + stepName);
 		}
 	}
-
+	
 	@Step("Sub-Verification: {verificationDescription}")
 	public static void subVerification(String verificationDescription) {
 		commonLogger("Sub-Verification", verificationDescription);
@@ -88,9 +85,41 @@ public class StepLogger {
 		}
 	}
 
+	@Step("Sub-step: {stepName}")
+	public static void subStep(String stepName, WebElement element) {
+		commonLogger("Sub-Step", stepName);
+		if (eachStepScreenshot) {
+			takeScreenShot("Sub-step" + stepName, element);
+		}
+	}
+	
+	@Step("Sub-Verification: {verificationDescription}")
+	public static void subVerification(String verificationDescription, WebElement element) {
+		commonLogger("Sub-Verification", verificationDescription);
+		if (eachStepScreenshot) {
+			takeScreenShot("Sub-Verification" + verificationDescription, element);
+		}
+	}
+
+	@Attachment(value = "{0}", type = "image/png")
+	public static byte[] takeScreenShot(String attachmentName, WebElement element) {
+		elementHighlight(element, 5);
+		byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+		elementHighlight(element, 0);
+		return screenshot;
+	}
+	
 	@Attachment(value = "{0}", type = "image/png")
 	public static byte[] takeScreenShot(String attachmentName) {
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+	}
+
+	public static void elementHighlight(WebElement element, Integer borderWidth) {
+        for (int i = 0; i < 2; i++) {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            String h = "arguments[0].style.cssText = 'border-width: "+borderWidth+"px; border-style: solid; border-color: red'";
+            js.executeScript(h, new Object[] { element });
+        }
 	}
 
 	public static void commonLogger(String operation, String step) {

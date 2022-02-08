@@ -10,17 +10,29 @@ import br.edu.mcesar.pages.login.LoginPO;
 public class SignUpPO extends LoginPO {
 
 	@FindBy(css = "input[placeholder='Confirm Password']")
-	WebElement confirmPasswordTextField;
+	private WebElement confirmPasswordTextField;
 	
 	@FindBy(xpath = "//button[normalize-space()='Register']")
-	WebElement registerButton;
+	private WebElement registerButton;
 
 	@FindBy(xpath = "//button[normalize-space()='New User? Register here!']")
-	WebElement signUpLink;
+	private WebElement signUpLink;
 
 	public SignUpPO(WebDriver driver) {
 		super(driver);
 		PageFactory.initElements(driver, this);
+	}
+
+	public WebElement getConfirmPasswordTextField() {
+		return confirmPasswordTextField;
+	}
+
+	public WebElement getRegisterButton() {
+		return registerButton;
+	}
+
+	public WebElement getSignUpLink() {
+		return signUpLink;
 	}
 
 }

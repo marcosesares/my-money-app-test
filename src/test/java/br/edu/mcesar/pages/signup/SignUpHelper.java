@@ -20,17 +20,17 @@ public class SignUpHelper extends BaseHelper {
 
 	public void fillSignUpFormAndClickRegisterButton(User user) {
 		fillSignUpForm(user);
-		StepLogger.subStep("Click the Register Button.");
-		po.registerButton.click();
+		StepLogger.subStep("Click the Register Button.", po.getRegisterButton());
+		po.getRegisterButton().click();
 	}
 
 	private void fillSignUpForm(User user) {
-		StepLogger.subStep("Click the New User? Register here! Link.");
-		po.signUpLink.click();
+		StepLogger.subStep("Click the New User? Register here! Link.", po.getSignUpLink());
+		po.getSignUpLink().click();
 		loginHelper.fillNameTextfield(user.getName());
 		loginHelper.fillLoginForm(user);
-		StepLogger.subStep("Type the user confirmation password.");
-		po.confirmPasswordTextField.clear();
-		po.confirmPasswordTextField.sendKeys(user.getPassword());
+		StepLogger.subStep("Type the user confirmation password.", po.getConfirmPasswordTextField());
+		po.getConfirmPasswordTextField().clear();
+		po.getConfirmPasswordTextField().sendKeys(user.getPassword());
 	}
 }

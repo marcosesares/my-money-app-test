@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import br.edu.mcesar.core.html.TextboxHelper;
 import br.edu.mcesar.core.logger.StepLogger;
 import io.github.bonigarcia.seljup.SeleniumJupiter;
 
@@ -12,7 +13,7 @@ import io.github.bonigarcia.seljup.SeleniumJupiter;
 public class BaseHelper {
 
 	private static String PAGE_URL = "https://my-money-app-mocha.vercel.app";
-	private WebDriver driver;
+	protected WebDriver driver;
 	private BasePO po;
 	private ExpectationHelper expectationHelper;
 
@@ -22,7 +23,7 @@ public class BaseHelper {
 		this.expectationHelper = new ExpectationHelper(webDriver);
 	}
 
-	public void openMyMoneyApp(WebDriver driver) {
+	public void openURL(WebDriver driver) {
 		StepLogger.subStep("Open " + PAGE_URL + " in " + ((RemoteWebDriver) driver).getCapabilities().getBrowserName() + " Browser.");
 		driver.get(PAGE_URL);
 	}
@@ -31,11 +32,28 @@ public class BaseHelper {
 		expectationHelper.verifyDisplayedStatus(targetElement);
 	}
 
+	public void verifyElementTextEqualTo(WebElement targetElement, String expectedText, String elementName) {
+		expectationHelper.verifyElementTextEqualTo(targetElement, expectedText, elementName);
+	}
+	
+	public void verifyValue(WebElement targetElement, String expectedText, String elementName) {
+		expectationHelper.verifyValue(targetElement, expectedText, elementName);
+	}
+	
 	public void verifyAppLogoDisplayedStatus() {
-		verifyDisplayedStatus(po.appLogo);
+		verifyDisplayedStatus(po.getAppLogo());
+	}
+
+	public void sendKeys(WebElement element, String value) {
+		element.clear();
+		element.sendKeys(value);
 	}
 
 	public WebDriver getDriver() {
 		return driver;
+	}
+
+	public String getTextboxValue(WebElement element) {
+		return TextboxHelper.getAttributeValue(element, "value");
 	}
 }

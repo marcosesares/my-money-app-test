@@ -10,22 +10,42 @@ import br.edu.mcesar.core.BasePO;
 public class LoginPO extends BasePO {
 
 	@FindBy(css = "input[placeholder='Name']")
-	WebElement nameTextField;
+	private WebElement nameTextField;
 	
 	@FindBy(css = "input[placeholder='Email']")
-	WebElement emailTextField;
+	private WebElement emailTextField;
 
 	@FindBy(css = "input[placeholder='Password']")
-	WebElement passwordTextField;
+	private WebElement passwordTextField;
 	
 	@FindBy(xpath = "//button[normalize-space()='Login']")
-	WebElement loginButton;
+	private WebElement loginButton;
 
 	@FindBy(xpath = "//button[normalize-space()='Already registered? Login here!']")
-	WebElement loginLink;
+	private WebElement loginLink;
 
 	public LoginPO(WebDriver driver) {
 		super(driver);
 		PageFactory.initElements(driver, this);
+	}
+
+	public WebElement getNameTextField() {
+		return nameTextField;
+	}
+
+	public WebElement getEmailTextField() {
+		return emailTextField;
+	}
+
+	public WebElement getPasswordTextField() {
+		return passwordTextField;
+	}
+
+	public WebElement getLoginButton() {
+		return loginButton;
+	}
+
+	public WebElement getLoginLink() {
+		return loginLink;
 	}
 }
