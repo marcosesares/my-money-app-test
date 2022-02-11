@@ -1,10 +1,12 @@
-package br.edu.mcesar.tests.smoke;
+package regression;
 
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.github.javafaker.Faker;
@@ -19,7 +21,8 @@ import io.github.bonigarcia.seljup.Arguments;
 import io.github.bonigarcia.seljup.SeleniumJupiter;
 import io.qameta.allure.Feature;
 
-@Tag("smoke")
+@Execution(ExecutionMode.SAME_THREAD)
+@Tag("regression")
 @ExtendWith(SeleniumJupiter.class)
 public class SignUpTest {
 
@@ -27,7 +30,7 @@ public class SignUpTest {
 	private DashboardHelper dashboardHelper;
 
 	@BeforeEach
-	private void setUp(@Arguments("--headless") ChromeDriver driver) {
+	private void setUp( ChromeDriver driver) {
 		dashboardHelper = new DashboardHelper(driver);
 		signUpHelper = new SignUpHelper(driver);
 		StepLogger.setCaseId(1002, driver);

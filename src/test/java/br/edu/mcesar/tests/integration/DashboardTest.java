@@ -3,6 +3,8 @@ package br.edu.mcesar.tests.integration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestTemplate;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.openqa.selenium.WebDriver;
 
 import br.edu.mcesar.core.logger.StepLogger;
@@ -13,8 +15,8 @@ import br.edu.mcesar.tests.BaseTest;
 import io.github.bonigarcia.seljup.Arguments;
 import io.qameta.allure.Feature;
 
+@Execution(ExecutionMode.SAME_THREAD)
 @Tag("integration")
-@Tag("regression")
 public class DashboardTest extends BaseTest {
 
 	private LoginHelper loginHelper;
@@ -22,7 +24,7 @@ public class DashboardTest extends BaseTest {
 	private WebDriver driver;
 	
 	@BeforeEach
-	void navigateToDashboardPage(@Arguments("--headless") WebDriver driver) {
+	void navigateToDashboardPage( WebDriver driver) {
 		this.driver = driver;
 		loginHelper = new LoginHelper(driver);
 		StepLogger.setCaseId(1003, driver);

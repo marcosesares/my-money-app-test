@@ -23,8 +23,9 @@ public class StepLogger {
 	static Long testStart;
 	static String stepIdVar = "";
 	static String logMessages = "";
-	static Boolean eachStepScreenshot = 
-			System.getenv("EACH_STEP_SCREENSHOT") != null ? Boolean.valueOf(System.getenv("EACH_STEP_SCREENSHOT")) : true;
+	static Boolean eachStepScreenshot = System.getenv("EACH_STEP_SCREENSHOT") != null
+			? Boolean.valueOf(System.getenv("EACH_STEP_SCREENSHOT"))
+			: true;
 	private static WebDriver driver;
 
 	private StepLogger() {
@@ -68,7 +69,7 @@ public class StepLogger {
 	public static void postCondition(String postConditionDescription) {
 		commonLogger("Post-Condition", postConditionDescription);
 	}
-	
+
 	@Step("Sub-step: {stepName}")
 	public static void subStep(String stepName) {
 		commonLogger("Sub-Step", stepName);
@@ -76,7 +77,7 @@ public class StepLogger {
 			takeScreenShot("Sub-step" + stepName);
 		}
 	}
-	
+
 	@Step("Sub-Verification: {verificationDescription}")
 	public static void subVerification(String verificationDescription) {
 		commonLogger("Sub-Verification", verificationDescription);
@@ -92,7 +93,7 @@ public class StepLogger {
 			takeScreenShot("Sub-step" + stepName, element);
 		}
 	}
-	
+
 	@Step("Sub-Verification: {verificationDescription}")
 	public static void subVerification(String verificationDescription, WebElement element) {
 		commonLogger("Sub-Verification", verificationDescription);
@@ -108,18 +109,18 @@ public class StepLogger {
 		elementHighlight(element, 0);
 		return screenshot;
 	}
-	
+
 	@Attachment(value = "{0}", type = "image/png")
 	public static byte[] takeScreenShot(String attachmentName) {
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 	}
 
 	public static void elementHighlight(WebElement element, Integer borderWidth) {
-        for (int i = 0; i < 2; i++) {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            String h = "arguments[0].style.cssText = 'border-width: "+borderWidth+"px; border-style: solid; border-color: red'";
-            js.executeScript(h, new Object[] { element });
-        }
+		for (int i = 0; i < 2; i++) {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			String h = "arguments[0].style.cssText = 'border-width: " + borderWidth + "px; border-style: solid; border-color: red'";
+			js.executeScript(h, new Object[] { element });
+		}
 	}
 
 	public static void commonLogger(String operation, String step) {
@@ -131,7 +132,7 @@ public class StepLogger {
 		if (logger != null) {
 			logger.debug(message);
 		} else {
-			logMessages += message+"\n";
+			logMessages += message + "\n";
 		}
 	}
 }

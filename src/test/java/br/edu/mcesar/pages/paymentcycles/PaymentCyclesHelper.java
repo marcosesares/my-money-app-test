@@ -55,16 +55,17 @@ public class PaymentCyclesHelper extends BaseHelper {
 
 	public void verifyPaymentCycleDisplayed(PaymentCycle paymentCycle) {
 		verifyPaymentCycleSectionLabel();
+		waitForElementToBeDisplayed(po.getListTableCell("Name", paymentCycle.getName()));
 		WebElement nameCell = po.getListTableCell("Name", paymentCycle.getName());
-		StepLogger.subVerification("Verify Name cell has value: " + paymentCycle.getName(), nameCell);
+//		StepLogger.subVerification("Verify Name cell has value: " + paymentCycle.getName(), nameCell);
 		verifyElementTextEqualTo(nameCell, paymentCycle.getName(), "Payment Cycle name");
 
 		WebElement monthCell = po.getListTableCell("Month", String.valueOf(paymentCycle.getMonth()));
-		StepLogger.subVerification("Verify Month cell has value: " + paymentCycle.getMonth(), monthCell);
+//		StepLogger.subVerification("Verify Month cell has value: " + paymentCycle.getMonth(), monthCell);
 		verifyElementTextEqualTo(monthCell, String.valueOf(paymentCycle.getMonth()), "Payment Cycle month");
 		
 		WebElement yearCell = po.getListTableCell("Year", String.valueOf(paymentCycle.getYear()));
-		StepLogger.subVerification("Verify Year cell has value: " + paymentCycle.getYear(), yearCell);
+//		StepLogger.subVerification("Verify Year cell has value: " + paymentCycle.getYear(), yearCell);
 		verifyElementTextEqualTo(yearCell, String.valueOf(paymentCycle.getYear()), "Payment Cycle year");
 	}
 
@@ -101,6 +102,7 @@ public class PaymentCyclesHelper extends BaseHelper {
 		addPaymentDebit(paymentCycle);
 
 		StepLogger.subStep("Click the Save button.", po.getSaveButton());
+		scrollToElement(po.getSaveButton());
 		po.getSaveButton().click();
 	}
 
