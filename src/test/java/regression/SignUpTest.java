@@ -16,7 +16,6 @@ import br.edu.mcesar.core.logger.StepLogger;
 import br.edu.mcesar.pages.dashboard.DashboardHelper;
 import br.edu.mcesar.pages.models.User;
 import br.edu.mcesar.pages.signup.SignUpHelper;
-import io.github.bonigarcia.seljup.Arguments;
 //import io.qameta.allure.Feature;
 import io.github.bonigarcia.seljup.SeleniumJupiter;
 import io.qameta.allure.Feature;

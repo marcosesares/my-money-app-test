@@ -1,5 +1,7 @@
 package br.edu.mcesar.core;
 
+import static br.edu.mcesar.core.BasePOConstants.APP_LOGO;
+
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -36,8 +38,8 @@ public class BaseHelper {
 		waitHelper.waitForElementToBeDisplayed(targetElement);
 	}
 
-	public void verifyDisplayedStatus(WebElement targetElement) {
-		expectationHelper.verifyDisplayedStatus(targetElement);
+	public void verifyDisplayedStatus(WebElement targetElement, String elementName) {
+		expectationHelper.verifyDisplayedStatus(targetElement, elementName);
 	}
 	
 	public void verifyElementTextEqualTo(WebElement targetElement, String expectedText, String elementName) {
@@ -49,7 +51,7 @@ public class BaseHelper {
 	}
 	
 	public void verifyAppLogoDisplayedStatus() {
-		verifyDisplayedStatus(po.getAppLogo());
+		verifyDisplayedStatus(po.getAppLogo(), APP_LOGO);
 	}
 
 	public void sendKeys(WebElement element, String value) {

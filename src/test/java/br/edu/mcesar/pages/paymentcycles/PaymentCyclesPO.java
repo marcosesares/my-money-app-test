@@ -1,5 +1,17 @@
 package br.edu.mcesar.pages.paymentcycles;
 
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.COLUMN_ACTIONS;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.TEXTBOX_BILLING_YEAR;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.BUTTON_CANCEL;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.COLUMN_MONTH;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.TEXTBOX_MONTH;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.COLUMN_NAME;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.TEXTBOX_NAME;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.BUTTON_SAVE;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.BUTTON_TAB_CREATE;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.BUTTON_TAB_LIST;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.COLUMN_YEAR;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,37 +22,37 @@ import br.edu.mcesar.core.BasePO;
 
 public class PaymentCyclesPO extends BasePO {
 
-	@FindBy(css = "button[data-target='tabList']")
+	@FindBy(css = BUTTON_TAB_LIST)
 	private WebElement listTabButton;
 
-	@FindBy(css = "button[data-target='tabCreate']")
+	@FindBy(css = BUTTON_TAB_CREATE)
 	private WebElement addTabButton;
 
-	@FindBy(xpath = "//div[@id='tabList']//th[contains(text(),'Name')]")
+	@FindBy(xpath = COLUMN_NAME)
 	private WebElement nameColumn;
 
-	@FindBy(xpath = "//div[@id='tabList']//th[contains(text(),'Month')]")
+	@FindBy(xpath = COLUMN_MONTH)
 	private WebElement monthColumn;
 
-	@FindBy(xpath = "//div[@id='tabList']//th[contains(text(),'Year')]")
+	@FindBy(xpath = COLUMN_YEAR)
 	private WebElement yearColumn;
 
-	@FindBy(xpath = "//div[@id='tabList']//th[contains(text(),'Actions')]")
+	@FindBy(xpath = COLUMN_ACTIONS)
 	private WebElement actionsColumn;
 
-	@FindBy(css = "input[placeholder='Inform the billing Name']")
+	@FindBy(css = TEXTBOX_NAME)
 	private WebElement nameTextbox;
 	
-	@FindBy(css = "input[placeholder='Inform the billing Month']")
+	@FindBy(css = TEXTBOX_MONTH)
 	private WebElement monthTextbox;
 	
-	@FindBy(css = "input[placeholder='Inform the billing Year']")
+	@FindBy(css = TEXTBOX_BILLING_YEAR)
 	private WebElement yearTextbox;
 	
-	@FindBy(xpath = "//button[normalize-space()='Save']")
+	@FindBy(xpath = BUTTON_SAVE)
 	private WebElement saveButton;
 	
-	@FindBy(xpath = "//button[normalize-space()='Cancel']")
+	@FindBy(xpath = BUTTON_CANCEL)
 	private WebElement cancelButton;
 	
 	protected PaymentCyclesPO(WebDriver driver) {

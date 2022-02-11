@@ -1,5 +1,9 @@
 package br.edu.mcesar.pages.paymentcycles;
 
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.MONTH;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.NAME;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.YEAR;
+
 import java.util.Arrays;
 
 import org.openqa.selenium.WebDriver;
@@ -43,8 +47,7 @@ public class PaymentCyclesHelper extends BaseHelper {
 	}
 
 	public void verifyPaymentCycleSectionLabel() {
-		StepLogger.subVerification("Verify Page Header section is displayed", po.getHeaderSectionLabel());
-		verifyDisplayedStatus(po.getHeaderSectionLabel());
+		verifyDisplayedStatus(po.getHeaderSectionLabel(), Constants.PAGE_HEADER_SECTION);
 		verifyElementTextEqualTo(po.getHeaderSectionLabel(), Constants.PAYMENT_CYCLE_HEADER, Constants.PAGE_HEADER_SECTION);
 	}
 
@@ -57,25 +60,19 @@ public class PaymentCyclesHelper extends BaseHelper {
 		verifyPaymentCycleSectionLabel();
 		waitForElementToBeDisplayed(po.getListTableCell("Name", paymentCycle.getName()));
 		WebElement nameCell = po.getListTableCell("Name", paymentCycle.getName());
-//		StepLogger.subVerification("Verify Name cell has value: " + paymentCycle.getName(), nameCell);
 		verifyElementTextEqualTo(nameCell, paymentCycle.getName(), "Payment Cycle name");
 
 		WebElement monthCell = po.getListTableCell("Month", String.valueOf(paymentCycle.getMonth()));
-//		StepLogger.subVerification("Verify Month cell has value: " + paymentCycle.getMonth(), monthCell);
 		verifyElementTextEqualTo(monthCell, String.valueOf(paymentCycle.getMonth()), "Payment Cycle month");
 		
 		WebElement yearCell = po.getListTableCell("Year", String.valueOf(paymentCycle.getYear()));
-//		StepLogger.subVerification("Verify Year cell has value: " + paymentCycle.getYear(), yearCell);
 		verifyElementTextEqualTo(yearCell, String.valueOf(paymentCycle.getYear()), "Payment Cycle year");
 	}
 
 	public void verifyAddPaymentCycleFormDisplayed() {
-		StepLogger.subVerification("Verify Name textbox is displayed.", po.getNameTextbox());
-		verifyDisplayedStatus(po.getNameTextbox());
-		StepLogger.subVerification("Verify Month textbox is displayed.", po.getMonthTextbox());
-		verifyDisplayedStatus(po.getMonthTextbox());
-		StepLogger.subVerification("Verify Year textbox is displayed.", po.getYearTextbox());
-		verifyDisplayedStatus(po.getYearTextbox());
+		verifyDisplayedStatus(po.getNameTextbox(), NAME);
+		verifyDisplayedStatus(po.getMonthTextbox(), MONTH);
+		verifyDisplayedStatus(po.getYearTextbox(), YEAR);
 	}
 
 	public PaymentCycle getPaymentCycle() {

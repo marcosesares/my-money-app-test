@@ -1,5 +1,12 @@
 package br.edu.mcesar.core;
 
+import static br.edu.mcesar.core.BasePOConstants.CONTENT_HEADER;
+import static br.edu.mcesar.core.BasePOConstants.DASHBOARD_LABEL;
+import static br.edu.mcesar.core.BasePOConstants.LOGIN_BOX_MSG;
+import static br.edu.mcesar.core.BasePOConstants.LOGIN_LOGO;
+import static br.edu.mcesar.core.BasePOConstants.PAYMENT_CYCLES_LABEL;
+import static br.edu.mcesar.core.BasePOConstants.REGISTER_LABEL;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,22 +16,22 @@ public class BasePO {
 	
 	protected WebDriver driver;
 
-	@FindBy(css = ".content-header h1")
+	@FindBy(css = CONTENT_HEADER)
 	private WebElement headerSectionLabel;
 
-	@FindBy(css = ".login-logo")
+	@FindBy(css = LOGIN_LOGO)
 	private WebElement appLogo;
 	
-	@FindBy(css = ".login-box-msg")
+	@FindBy(css = LOGIN_BOX_MSG)
 	private WebElement loginBoxMsg;
 	
-	@FindBy(xpath = "//span[normalize-space()='Dashboard']")
+	@FindBy(xpath = DASHBOARD_LABEL)
 	private WebElement dashboardMenuLink;
 	
-	@FindBy(xpath = "//a[span[normalize-space()='Register']]")
+	@FindBy(xpath = REGISTER_LABEL)
 	private WebElement registerMenuLink;
 	
-	@FindBy(xpath = "//a[span[normalize-space()='Payment cycles']]")
+	@FindBy(xpath = PAYMENT_CYCLES_LABEL)
 	private WebElement paymentCyclesMenuLink;
 	
 	protected BasePO(WebDriver webDriver) {

@@ -1,5 +1,10 @@
 package br.edu.mcesar.pages.dashboard;
 
+import static br.edu.mcesar.pages.dashboard.DashboardPOConstants.CONSOLIDATED;
+import static br.edu.mcesar.pages.dashboard.DashboardPOConstants.TOTAL_CREDITS;
+import static br.edu.mcesar.pages.dashboard.DashboardPOConstants.TOTAL_DEBITS;
+import static br.edu.mcesar.pages.dashboard.DashboardPOConstants.USERNAME;
+
 import java.text.DecimalFormat;
 
 import org.openqa.selenium.WebDriver;
@@ -17,26 +22,26 @@ public class DashboardHelper extends BaseHelper {
 	}
 
 	public void verifyDashboardSectionDisplayedStatus() {
-		verifyDisplayedStatus(po.getHeaderSectionLabel());
+		verifyDisplayedStatus(po.getHeaderSectionLabel(), Constants.PAGE_HEADER_SECTION);
 	}
 
 	public void verifyUserNameLabelDisplayedStatus() {
-		verifyDisplayedStatus(po.getUserNameLabel());
+		verifyDisplayedStatus(po.getUserNameLabel(), USERNAME);
 	}
 	
 	public void verifyTotalCreditsLabelText() {
-		verifyDisplayedStatus(po.getTotalCreditsLabel());
-		verifyElementTextEqualTo(po.getTotalCreditsLabel(), Constants.TOTAL_CREDITS, null);
+		verifyDisplayedStatus(po.getTotalCreditsLabel(), TOTAL_CREDITS);
+		verifyElementTextEqualTo(po.getTotalCreditsLabel(), TOTAL_CREDITS, null);
 	}
 	
 	public void verifyTotalDebitsLabelText() {
-		verifyDisplayedStatus(po.getTotalDebitsLabel());
-		verifyElementTextEqualTo(po.getTotalDebitsLabel(), Constants.TOTAL_DEBITS, null);
+		verifyDisplayedStatus(po.getTotalDebitsLabel(), TOTAL_DEBITS);
+		verifyElementTextEqualTo(po.getTotalDebitsLabel(), TOTAL_DEBITS, null);
 	}
 	
 	public void verifyConsolidatedLabelText() {
-		verifyDisplayedStatus(po.getConsolidatedLabel());
-		verifyElementTextEqualTo(po.getConsolidatedLabel(), Constants.CONSOLIDATED, null);
+		verifyDisplayedStatus(po.getConsolidatedLabel(), CONSOLIDATED);
+		verifyElementTextEqualTo(po.getConsolidatedLabel(), CONSOLIDATED, null);
 	}
 	
 	public void verifyConsolidatedValue() {
@@ -44,6 +49,6 @@ public class DashboardHelper extends BaseHelper {
 		Double credits = Double.valueOf(po.getTotalCreditsValue().getText().replaceAll(Constants.DOLLAR_REGEX, Constants.EMPTY_STRING));
 		Double debits = Double.valueOf(po.getTotalDebitsValue().getText().replaceAll(Constants.DOLLAR_REGEX, Constants.EMPTY_STRING));
 		Double total = credits - debits;
-		verifyElementTextEqualTo(po.getConsolidatedValue(), Constants.DOLLAR + format.format(total), Constants.CONSOLIDATED);
+		verifyElementTextEqualTo(po.getConsolidatedValue(), Constants.DOLLAR + format.format(total), CONSOLIDATED);
 	}
 }

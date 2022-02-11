@@ -1,5 +1,11 @@
 package br.edu.mcesar.pages.login;
 
+import static br.edu.mcesar.pages.login.LoginPOConstants.BUTTON_ALREADY_REGISTERED;
+import static br.edu.mcesar.pages.login.LoginPOConstants.BUTTON_LOGIN;
+import static br.edu.mcesar.pages.login.LoginPOConstants.INPUT_PLACEHOLDER_EMAIL;
+import static br.edu.mcesar.pages.login.LoginPOConstants.INPUT_PLACEHOLDER_NAME;
+import static br.edu.mcesar.pages.login.LoginPOConstants.INPUT_PLACEHOLDER_PASSWORD;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,19 +15,19 @@ import br.edu.mcesar.core.BasePO;
 
 public class LoginPO extends BasePO {
 
-	@FindBy(css = "input[placeholder='Name']")
+	@FindBy(css = INPUT_PLACEHOLDER_NAME)
 	private WebElement nameTextField;
 	
-	@FindBy(css = "input[placeholder='Email']")
+	@FindBy(css = INPUT_PLACEHOLDER_EMAIL)
 	private WebElement emailTextField;
 
-	@FindBy(css = "input[placeholder='Password']")
+	@FindBy(css = INPUT_PLACEHOLDER_PASSWORD)
 	private WebElement passwordTextField;
 	
-	@FindBy(xpath = "//button[normalize-space()='Login']")
+	@FindBy(xpath = BUTTON_LOGIN)
 	private WebElement loginButton;
 
-	@FindBy(xpath = "//button[normalize-space()='Already registered? Login here!']")
+	@FindBy(xpath = BUTTON_ALREADY_REGISTERED)
 	private WebElement loginLink;
 
 	public LoginPO(WebDriver driver) {

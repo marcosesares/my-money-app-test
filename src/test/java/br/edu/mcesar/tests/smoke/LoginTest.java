@@ -11,7 +11,6 @@ import br.edu.mcesar.pages.dashboard.DashboardHelper;
 import br.edu.mcesar.pages.login.LoginHelper;
 import br.edu.mcesar.pages.models.User;
 import br.edu.mcesar.tests.BaseTest;
-import io.github.bonigarcia.seljup.Arguments;
 import io.qameta.allure.Feature;
 
 @Execution(ExecutionMode.SAME_THREAD)

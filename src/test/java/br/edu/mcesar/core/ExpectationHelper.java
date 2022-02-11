@@ -35,11 +35,12 @@ public class ExpectationHelper {
 		Assertions.assertEquals(expectedText, actualText, message);
 	}
 	
-	public void verifyDisplayedStatus(WebElement targetElement) {
+	public void verifyDisplayedStatus(WebElement targetElement, String elementName) {
 		WebElement elementToBeDisplayed = waitHelper.waitForElementToBeDisplayed(targetElement);
 		String elementText = elementToBeDisplayed.getText();
 		String tagName = elementToBeDisplayed.getTagName();
-		String message = validationsHelper.getDisplayedValidation(elementText != null ? elementText : tagName);
+		elementName = elementName != null ? elementName : elementText != null ? elementText : tagName;
+		String message = validationsHelper.getDisplayedValidation(elementName);
 		StepLogger.subVerification(message, targetElement);
 		Assertions.assertSame(targetElement, elementToBeDisplayed, message);
 	}
