@@ -1,18 +1,17 @@
 package br.edu.mcesar.pages.paymentcycles;
 
-import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.COLUMN_ACTIONS;
-import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.TEXTBOX_BILLING_YEAR;
 import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.BUTTON_CANCEL;
-import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.COLUMN_MONTH;
-import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.TEXTBOX_MONTH;
-import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.COLUMN_NAME;
-import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.TEXTBOX_NAME;
 import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.BUTTON_SAVE;
 import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.BUTTON_TAB_CREATE;
 import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.BUTTON_TAB_LIST;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.COLUMN_ACTIONS;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.COLUMN_MONTH;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.COLUMN_NAME;
 import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.COLUMN_YEAR;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.TEXTBOX_BILLING_YEAR;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.TEXTBOX_MONTH;
+import static br.edu.mcesar.pages.paymentcycles.PaymentCyclesPOConstants.TEXTBOX_NAME;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -61,131 +60,119 @@ public class PaymentCyclesPO extends BasePO {
 	}
 	
 	public WebElement getListTableCell(String column, String value) {
-		return driver.findElement(By.xpath(
-				"//div[@id='tabList']"
-						+ "//td[count(//table/thead/tr"
-						+ "/th[.='" + column + "']/preceding-sibling::th)+1][normalize-space()='" + value + "']"));
+		String xpathExpression = 
+				  "//div[@id='tabList']"
+				+ "//td[count(//table/thead/tr"
+				+ "/th[.='" + column + "']/preceding-sibling::th)+1][normalize-space()='" + value + "']";
+		return findElementByxPath(xpathExpression);
 	}
 
 	public WebElement getCreditAddButton(Integer row) {
-		return driver.findElement(By.xpath(
-				"//div[fieldset[legend[normalize-space()='Credits']]]"
-			  + "//input[@name='credits[" + row + "].name']"
-	  		  + "/parent::td/parent::tr"
-	  		  + "//button[contains(@class, 'btn-success')]"));
+		String xpathExpression = 
+				  "//div[fieldset[legend[normalize-space()='Credits']]]"
+				+ "//input[@name='credits[" + row + "].name']"
+				+ "/parent::td/parent::tr"
+				+ "//button[contains(@class, 'btn-success')]";
+		return findElementByxPath(xpathExpression);
 	}
 
 	public WebElement getCreditCopyButton(Integer row) {
-		return driver.findElement(By.xpath(
-				"//div[fieldset[legend[normalize-space()='Credits']]]"
-						+ "//input[@name='credits[" + row + "].name']"
-						+ "/parent::td/parent::tr"
-						+ "//button[contains(@class, 'btn-warning')]"));
+		String xpathExpression = 
+				  "//div[fieldset[legend[normalize-space()='Credits']]]"
+				+ "//input[@name='credits[" + row + "].name']"
+				+ "/parent::td/parent::tr"
+				+ "//button[contains(@class, 'btn-warning')]";
+		return findElementByxPath(xpathExpression);
 	}
 
 	public WebElement getCreditDeleteButton(Integer row) {
-		return driver.findElement(By.xpath(
-				"//div[fieldset[legend[normalize-space()='Credits']]]"
-						+ "//input[@name='credits[" + row + "].name']"
-						+ "/parent::td/parent::tr"
-						+ "//button[contains(@class, 'btn-danger')]"));
+		String xpathExpression = 
+				  "//div[fieldset[legend[normalize-space()='Credits']]]"
+				+ "//input[@name='credits[" + row + "].name']"
+				+ "/parent::td/parent::tr"
+				+ "//button[contains(@class, 'btn-danger')]";
+		return findElementByxPath(xpathExpression);
 	}
 	
 	public WebElement getCreditValueTextbox(Integer row) {
-		return driver.findElement(By.xpath(
-				"//div[fieldset[legend[normalize-space()='Credits']]]"
-						+ "//input[@name='credits[" + row + "].value']"));
+		String xpathExpression = 
+				  "//div[fieldset[legend[normalize-space()='Credits']]]"
+				+ "//input[@name='credits[" + row + "].value']";
+		return findElementByxPath(xpathExpression);
 	}
 	
 	public WebElement getCreditNameTextbox(Integer row) {
-		return driver.findElement(By.xpath(
-				"//div[fieldset[legend[normalize-space()='Credits']]]"
-						+ "//input[@name='credits[" + row + "].name']"));
+		String xpathExpression = 
+				  "//div[fieldset[legend[normalize-space()='Credits']]]"
+				+ "//input[@name='credits[" + row + "].name']";
+		return findElementByxPath(xpathExpression);
 	}
 
 	public WebElement getDebitAddButton(Integer row) {
-		return driver.findElement(By.xpath(
-				"//div[fieldset[legend[normalize-space()='Debits']]]"
-						+ "//input[@name='debts[" + row + "].name']"
-						+ "/parent::td/parent::tr"
-						+ "//button[contains(@class, 'btn-success')]"));
+		String xpathExpression = 
+				  "//div[fieldset[legend[normalize-space()='Debits']]]"
+				+ "//input[@name='debts[" + row + "].name']"
+				+ "/parent::td/parent::tr"
+				+ "//button[contains(@class, 'btn-success')]";
+		return findElementByxPath(xpathExpression);
 	}
 	
 	public WebElement getDebitCopyButton(Integer row) {
-		return driver.findElement(By.xpath(
-				"//div[fieldset[legend[normalize-space()='Debits']]]"
-						+ "//input[@name='debts[" + row + "].name']"
-						+ "/parent::td/parent::tr"
-						+ "//button[contains(@class, 'btn-warning')]"));
+		String xpathExpression = 
+				  "//div[fieldset[legend[normalize-space()='Debits']]]"
+				+ "//input[@name='debts[" + row + "].name']"
+				+ "/parent::td/parent::tr"
+				+ "//button[contains(@class, 'btn-warning')]";
+		return findElementByxPath(xpathExpression);
 	}
 	
 	public WebElement getDebitDeleteButton(Integer row) {
-		return driver.findElement(By.xpath(
-				"//div[fieldset[legend[normalize-space()='Debits']]]"
-						+ "//input[@name='debts[" + row + "].name']"
-						+ "/parent::td/parent::tr"
-						+ "//button[contains(@class, 'btn-danger')]"));
+		String xpathExpression = 
+				  "//div[fieldset[legend[normalize-space()='Debits']]]"
+				+ "//input[@name='debts[" + row + "].name']"
+				+ "/parent::td/parent::tr"
+				+ "//button[contains(@class, 'btn-danger')]";
+		return findElementByxPath(xpathExpression);
 	}
 	
 	public WebElement getDebitValueTextbox(Integer row) {
-		return driver.findElement(By.xpath(
-				"//div[fieldset[legend[normalize-space()='Debits']]]"
-						+ "//input[@name='debts[" + row + "].value']"));
+		String xpathExpression = 
+				  "//div[fieldset[legend[normalize-space()='Debits']]]"
+				+ "//input[@name='debts[" + row + "].value']";
+		return findElementByxPath(xpathExpression);
 	}
 	
 	public WebElement getDebitNameTextbox(Integer row) {
-		return driver.findElement(By.xpath(
-				"//div[fieldset[legend[normalize-space()='Debits']]]"
-						+ "//input[@name='debts[" + row + "].name']"));
+		String xpathExpression = "//div[fieldset[legend[normalize-space()='Debits']]]"
+				+ "//input[@name='debts[" + row + "].name']";
+		return findElementByxPath(xpathExpression);
 	}
 
 	public WebElement getDebitStatusTextbox(Integer row) {
-		return driver.findElement(By.xpath(
-				"//div[fieldset[legend[normalize-space()='Debits']]]"
-						+ "//input[@name='debts[" + row + "].status']"));
+		String xpathExpression = "//div[fieldset[legend[normalize-space()='Debits']]]"
+				+ "//input[@name='debts[" + row + "].status']";
+		return findElementByxPath(xpathExpression);
 	}
 	
-	public WebElement getListTabButton() {
-		return listTabButton;
-	}
+	public WebElement getListTabButton() { return listTabButton; }
 
-	public WebElement getAddTabButton() {
-		return addTabButton;
-	}
+	public WebElement getAddTabButton() { return addTabButton; }
 
-	public WebElement getNameColumn() {
-		return nameColumn;
-	}
+	public WebElement getNameColumn() { return nameColumn; }
 
-	public WebElement getMonthColumn() {
-		return monthColumn;
-	}
+	public WebElement getMonthColumn() { return monthColumn; }
 
-	public WebElement getYearColumn() {
-		return yearColumn;
-	}
+	public WebElement getYearColumn() { return yearColumn; }
 
-	public WebElement getActionsColumn() {
-		return actionsColumn;
-	}
+	public WebElement getActionsColumn() { return actionsColumn; }
 
-	public WebElement getNameTextbox() {
-		return nameTextbox;
-	}
+	public WebElement getNameTextbox() { return nameTextbox; }
 
-	public WebElement getMonthTextbox() {
-		return monthTextbox;
-	}
+	public WebElement getMonthTextbox() { return monthTextbox; }
 
-	public WebElement getYearTextbox() {
-		return yearTextbox;
-	}
+	public WebElement getYearTextbox() { return yearTextbox; }
 
-	public WebElement getSaveButton() {
-		return saveButton;
-	}
+	public WebElement getSaveButton() { return saveButton; }
 
-	public WebElement getCancelButton() {
-		return cancelButton;
-	}
+	public WebElement getCancelButton() { return cancelButton; }
 }

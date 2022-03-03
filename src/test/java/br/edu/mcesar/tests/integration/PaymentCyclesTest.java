@@ -1,5 +1,7 @@
 package br.edu.mcesar.tests.integration;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestTemplate;
@@ -7,10 +9,16 @@ import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.openqa.selenium.WebDriver;
 
+import com.github.javafaker.Faker;
+
+import br.edu.mcesar.core.Constants;
 import br.edu.mcesar.core.logger.StepLogger;
 import br.edu.mcesar.pages.login.LoginHelper;
+import br.edu.mcesar.pages.models.Credits;
+import br.edu.mcesar.pages.models.Debits;
 import br.edu.mcesar.pages.models.PaymentCycle;
 import br.edu.mcesar.pages.models.User;
+import br.edu.mcesar.pages.models.Debits.Status;
 import br.edu.mcesar.pages.paymentcycles.PaymentCyclesHelper;
 import br.edu.mcesar.tests.BaseTest;
 import io.qameta.allure.Feature;
@@ -71,4 +79,14 @@ public class PaymentCyclesTest extends BaseTest {
 		
 	}
 
+	@DataProvider
+	public Object[][] getPaymentCycle() {
+		Faker faker = new Faker();
+		Credits credits = new Credits(faker.artist().name(), faker.regexify(Constants.MONTH_REGEX));
+		Debits debits = new Debits(faker.artist().name(), faker.regexify(Constants.MONTH_REGEX), Status.AGENDADO);
+
+		PaymentCycle paymentCycle = new PaymentCycle(faker.artist().name(), new Integer(faker.regexify(Constants.MONTH_REGEX)),
+				new Integer(faker.regexify(Constants.YEAR_REGEX)), Arrays.asList(credits), Arrays.asList(debits));
+		return null;
+	}
 }

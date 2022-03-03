@@ -7,6 +7,7 @@ import static br.edu.mcesar.core.BasePOConstants.LOGIN_LOGO;
 import static br.edu.mcesar.core.BasePOConstants.PAYMENT_CYCLES_LABEL;
 import static br.edu.mcesar.core.BasePOConstants.REGISTER_LABEL;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,7 +15,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class BasePO {
 	
-	protected WebDriver driver;
+	private WebDriver driver;
 
 	@FindBy(css = CONTENT_HEADER)
 	private WebElement headerSectionLabel;
@@ -37,6 +38,10 @@ public class BasePO {
 	protected BasePO(WebDriver webDriver) {
 		driver = webDriver;
 		PageFactory.initElements(driver, this);
+	}
+
+	protected WebElement findElementByxPath(String xpathExpression) {
+		return driver.findElement(By.xpath(xpathExpression));
 	}
 
 	public WebElement getHeaderSectionLabel() {

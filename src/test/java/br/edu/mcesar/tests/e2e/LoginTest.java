@@ -1,4 +1,4 @@
-package br.edu.mcesar.tests.smoke;
+package br.edu.mcesar.tests.e2e;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestTemplate;
@@ -14,7 +14,7 @@ import br.edu.mcesar.tests.BaseTest;
 import io.qameta.allure.Feature;
 
 @Execution(ExecutionMode.SAME_THREAD)
-@Tag("smoke")
+@Tag("e2e")
 public class LoginTest extends BaseTest {
 
 	private LoginHelper loginHelper;

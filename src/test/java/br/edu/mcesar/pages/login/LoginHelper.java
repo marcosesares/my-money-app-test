@@ -25,7 +25,7 @@ public class LoginHelper extends BaseHelper {
 
 	public void loginToMyMoneyApp(User user) {
 		fillLoginFormAndClickLoginButton(user);
-		StepLogger.verification("Verify Dashboard is displayed.");
+		StepLogger.subVerification("Verify Dashboard is displayed.");
 		dashboardHelper.verifyDashboardSectionDisplayedStatus();
 	}
 
