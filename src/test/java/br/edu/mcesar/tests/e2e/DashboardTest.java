@@ -1,4 +1,4 @@
-package br.edu.mcesar.tests.integration;
+package br.edu.mcesar.tests.e2e;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
@@ -15,7 +15,7 @@ import br.edu.mcesar.tests.BaseTest;
 import io.qameta.allure.Feature;
 
 @Execution(ExecutionMode.SAME_THREAD)
-@Tag("integration")
+@Tag("e2e")
 public class DashboardTest extends BaseTest {
 
 	private LoginHelper loginHelper;

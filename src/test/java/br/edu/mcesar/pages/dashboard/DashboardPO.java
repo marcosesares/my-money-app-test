@@ -1,12 +1,12 @@
 package br.edu.mcesar.pages.dashboard;
 
 import static br.edu.mcesar.pages.dashboard.DashboardPOConstants.LABEL_CONSOLIDATED;
-import static br.edu.mcesar.pages.dashboard.DashboardPOConstants.VALUE_CONSOLIDATED;
 import static br.edu.mcesar.pages.dashboard.DashboardPOConstants.LABEL_TOTAL_CREDITS;
-import static br.edu.mcesar.pages.dashboard.DashboardPOConstants.VALUE_TOTAL_CREDITS;
 import static br.edu.mcesar.pages.dashboard.DashboardPOConstants.LABEL_TOTAL_DEBITS;
-import static br.edu.mcesar.pages.dashboard.DashboardPOConstants.VALUE_TOTAL_DEBITS;
 import static br.edu.mcesar.pages.dashboard.DashboardPOConstants.USERNAME_SELECTOR;
+import static br.edu.mcesar.pages.dashboard.DashboardPOConstants.VALUE_CONSOLIDATED;
+import static br.edu.mcesar.pages.dashboard.DashboardPOConstants.VALUE_TOTAL_CREDITS;
+import static br.edu.mcesar.pages.dashboard.DashboardPOConstants.VALUE_TOTAL_DEBITS;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

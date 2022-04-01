@@ -64,12 +64,6 @@
 
 		<!-- Dependencies -->
 		<dependency>
-			<groupId>org.junit.platform</groupId>
-			<artifactId>junit-platform-suite</artifactId>
-			<version>${junit.platform.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j.version}</version>
@@ -92,6 +86,12 @@
 		</dependency>
 
 		<!-- Test dependencies -->
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-suite</artifactId>
+			<version>${junit.platform.version}</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
@@ -125,8 +125,7 @@
 		<dependency>
 			<groupId>org.apache.maven.surefire</groupId>
 			<artifactId>surefire-logger-api</artifactId>
-			<version>2.22.2</version>
-			<!-- to get around bug https://github.com/junit-team/junit5/issues/1367 -->
+			<version>${maven-surefire-plugin.version}</version>
 			<scope>test</scope>
 			<optional>true</optional>
 		</dependency>
@@ -143,8 +142,8 @@
 				<configuration>
                <forkCount>4</forkCount>
                <reuseForks>false</reuseForks>
-					<groups>e2e</groups>
-					<excludedGroups>android, locals, smoke, regression, integration</excludedGroups>
+					<groups>smoke, e2e</groups>
+					<excludedGroups>regression, integration</excludedGroups>
 					<systemPropertyVariables>
 						<allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
 					</systemPropertyVariables>

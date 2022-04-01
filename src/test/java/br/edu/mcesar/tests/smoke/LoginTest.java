@@ -1,4 +1,4 @@
-package br.edu.mcesar.tests.e2e;
+package br.edu.mcesar.tests.smoke;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.TestTemplate;

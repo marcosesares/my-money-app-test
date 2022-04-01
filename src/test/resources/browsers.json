@@ -1,0 +1,16 @@
+{
+   "browsers": [
+      [
+         {
+            "type": "chrome",
+            "version": "latest"
+         }
+      ],
+      [
+         {
+            "type": "firefox",
+            "version": "latest"
+         }
+      ]
+   ]
+}
