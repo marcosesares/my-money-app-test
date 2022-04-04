@@ -7,13 +7,13 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-//import io.qameta.allure.Allure;
-//import io.qameta.allure.Attachment;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
+
+import static br.edu.mcesar.core.Constants.EACH_STEP_SCREENSHOT;
 
 public class StepLogger {
 
@@ -23,8 +23,8 @@ public class StepLogger {
 	static Long testStart;
 	static String stepIdVar = "";
 	static String logMessages = "";
-	static Boolean eachStepScreenshot = System.getenv("EACH_STEP_SCREENSHOT") != null
-			? Boolean.valueOf(System.getenv("EACH_STEP_SCREENSHOT"))
+	static Boolean eachStepScreenshot = System.getenv(EACH_STEP_SCREENSHOT) != null
+			? Boolean.valueOf(System.getenv(EACH_STEP_SCREENSHOT))
 			: true;
 	private static WebDriver driver;
 

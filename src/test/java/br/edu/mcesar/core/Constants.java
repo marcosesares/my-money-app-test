@@ -14,9 +14,21 @@ public class Constants {
     public static final String PAYMENT_CYCLE_HEADER = "Payment Cycle Register";
     public static final String PAGE_HEADER_SECTION = "Page Header section";
     public static final String USER_PROPERTIES = "user.properties";
+    public static final String APPLICATION_PROPERTIES = "application.properties";
+    public static final String SIGNUP_PATH = "/signup";
+    public static final String URLENC_CHARSET = "application/x-www-form-urlencoded; charset=UTF-8";
+    public static final String JSON_CHARSET = "application/json; charset=utf-8";
+    public static final String FORM_URLENC = "x-www-form-urlencoded";
+    public static final String OPEN_ENDPOINT = "openEndpoint";
+    public static final String BASE_URL = "baseUrl";
+    public static final String ENDPOINT = "endpoint";
     public static final String NAME = "name";
     public static final String EMAIL = "email";
+    public static final String TOKEN = "token";
     public static final String PASSWORD = "password";
+    public static final String CONFIRM_PASSWORD = "confirm_password";
+    public static final String CONTENT_TYPE = "Content-Type";
+    public static final String EACH_STEP_SCREENSHOT = "EACH_STEP_SCREENSHOT";
 
 	private Constants() {}
 }

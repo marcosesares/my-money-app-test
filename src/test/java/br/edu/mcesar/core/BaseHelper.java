@@ -1,6 +1,10 @@
 package br.edu.mcesar.core;
 
 import static br.edu.mcesar.core.BasePOConstants.APP_LOGO;
+import static br.edu.mcesar.core.Constants.APPLICATION_PROPERTIES;
+import static br.edu.mcesar.core.Constants.BASE_URL;
+
+import java.util.Properties;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +18,7 @@ import io.github.bonigarcia.seljup.SeleniumJupiter;
 @ExtendWith(SeleniumJupiter.class)
 public class BaseHelper {
 
-	private static String PAGE_URL = "https://my-money-app-mocha.vercel.app";
+	static Properties properties = PropertiesUtil.getInstance().getProperties(APPLICATION_PROPERTIES);
 	protected WebDriver driver;
 	private BasePO po;
 	private ExpectationHelper expectationHelper;
@@ -30,8 +34,8 @@ public class BaseHelper {
 	}
 
 	public void openURL(WebDriver driver) {
-		StepLogger.subStep("Open " + PAGE_URL + " in " + ((RemoteWebDriver) driver).getCapabilities().getBrowserName() + " Browser.");
-		driver.get(PAGE_URL);
+		StepLogger.subStep("Open " + properties.getProperty(BASE_URL) + " in " + ((RemoteWebDriver) driver).getCapabilities().getBrowserName() + " Browser.");
+		driver.get(properties.getProperty(BASE_URL));
 	}
 
 	public void waitForElementToBeDisplayed(WebElement targetElement) {
