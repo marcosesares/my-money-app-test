@@ -13,6 +13,10 @@ public class Constants {
     public static final String DOLLAR = "$";
     public static final String PAYMENT_CYCLE_HEADER = "Payment Cycle Register";
     public static final String PAGE_HEADER_SECTION = "Page Header section";
+    public static final String USER_PROPERTIES = "user.properties";
+    public static final String NAME = "name";
+    public static final String EMAIL = "email";
+    public static final String PASSWORD = "password";
 
 	private Constants() {}
 }

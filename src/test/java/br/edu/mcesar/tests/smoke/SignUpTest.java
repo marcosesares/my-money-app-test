@@ -1,24 +1,17 @@
 package br.edu.mcesar.tests.smoke;
 
 
-import java.util.stream.Stream;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.ArgumentsProvider;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.openqa.selenium.WebDriver;
 
-import com.github.javafaker.Faker;
-
-import br.edu.mcesar.core.Constants;
 import br.edu.mcesar.core.logger.StepLogger;
+import br.edu.mcesar.core.providers.UserProvider;
 import br.edu.mcesar.pages.dashboard.DashboardHelper;
 import br.edu.mcesar.pages.models.User;
 import br.edu.mcesar.pages.signup.SignUpHelper;
@@ -58,14 +51,4 @@ public class SignUpTest {
 		dashboardHelper.verifyUserNameLabelDisplayedStatus();
 	}
 	
-	public static class UserProvider implements ArgumentsProvider {
-
-		@Override
-		public Stream<? extends Arguments> provideArguments(ExtensionContext context) throws Exception {
-			Faker faker = new Faker();
-			User user = new User(faker.artist().name(), faker.regexify(Constants.EMAIL_REGEX), faker.regexify(Constants.PASSWORD_REGEX));
-			return Stream.of(user).map(Arguments::of);
-		}
-		
-	}
 }
