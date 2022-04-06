@@ -1,4 +1,4 @@
-package br.edu.mcesar.tests.component;
+package br.edu.mcesar.tests.integration;
 
 import static br.edu.mcesar.core.Constants.CONTENT_TYPE;
 import static br.edu.mcesar.core.Constants.EACH_STEP_SCREENSHOT;
