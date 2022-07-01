@@ -23,9 +23,10 @@ public class PaymentCycleProvider implements ArgumentsProvider {
 		Credits credits = new Credits(faker.artist().name(), faker.regexify(Constants.MONTH_REGEX));
 		Debits debits = new Debits(faker.artist().name(), faker.regexify(Constants.MONTH_REGEX), Status.AGENDADO);
 
-		PaymentCycle paymentCycle = new PaymentCycle(faker.artist().name(), new Integer(faker.regexify(Constants.MONTH_REGEX)),
-				new Integer(faker.regexify(Constants.YEAR_REGEX)), Arrays.asList(credits), Arrays.asList(debits));
+		PaymentCycle paymentCycle = new PaymentCycle(faker.artist().name(),
+				Integer.parseInt(faker.regexify(Constants.MONTH_REGEX)),
+				Integer.parseInt(faker.regexify(Constants.YEAR_REGEX)), Arrays.asList(credits), Arrays.asList(debits));
 		return Stream.of(paymentCycle).map(Arguments::of);
 	}
-	
+
 }

@@ -6,3 +6,4 @@
 .settings
 .idea/*
 my-money-app-test.iml
+.classpath

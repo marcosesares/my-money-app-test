@@ -48,7 +48,8 @@ public class PaymentCyclesHelper extends BaseHelper {
 
 	public void verifyPaymentCycleSectionLabel() {
 		verifyDisplayedStatus(po.getHeaderSectionLabel(), Constants.PAGE_HEADER_SECTION);
-		verifyElementTextEqualTo(po.getHeaderSectionLabel(), Constants.PAYMENT_CYCLE_HEADER, Constants.PAGE_HEADER_SECTION);
+		verifyElementTextEqualTo(po.getHeaderSectionLabel(), Constants.PAYMENT_CYCLE_HEADER,
+				Constants.PAGE_HEADER_SECTION);
 	}
 
 	public void clickAddButton() {
@@ -64,7 +65,7 @@ public class PaymentCyclesHelper extends BaseHelper {
 
 		WebElement monthCell = po.getListTableCell("Month", String.valueOf(paymentCycle.getMonth()));
 		verifyElementTextEqualTo(monthCell, String.valueOf(paymentCycle.getMonth()), "Payment Cycle month");
-		
+
 		WebElement yearCell = po.getListTableCell("Year", String.valueOf(paymentCycle.getYear()));
 		verifyElementTextEqualTo(yearCell, String.valueOf(paymentCycle.getYear()), "Payment Cycle year");
 	}
@@ -80,8 +81,9 @@ public class PaymentCyclesHelper extends BaseHelper {
 		Credits credits = new Credits(faker.artist().name(), faker.regexify(Constants.MONTH_REGEX));
 		Debits debits = new Debits(faker.artist().name(), faker.regexify(Constants.MONTH_REGEX), Status.AGENDADO);
 
-		PaymentCycle paymentCycle = new PaymentCycle(faker.artist().name(), new Integer(faker.regexify(Constants.MONTH_REGEX)),
-				new Integer(faker.regexify(Constants.YEAR_REGEX)), Arrays.asList(credits), Arrays.asList(debits));
+		PaymentCycle paymentCycle = new PaymentCycle(faker.artist().name(),
+				Integer.parseInt(faker.regexify(Constants.MONTH_REGEX)),
+				Integer.parseInt(faker.regexify(Constants.YEAR_REGEX)), Arrays.asList(credits), Arrays.asList(debits));
 		return paymentCycle;
 	}
 
@@ -91,10 +93,10 @@ public class PaymentCyclesHelper extends BaseHelper {
 
 		StepLogger.subStep("Type the payment cycle month.", po.getMonthTextbox());
 		sendKeys(po.getMonthTextbox(), String.valueOf(paymentCycle.getMonth()));
-		
+
 		StepLogger.subStep("Type the payment cycle year.", po.getYearTextbox());
 		sendKeys(po.getYearTextbox(), String.valueOf(paymentCycle.getYear()));
-		
+
 		addPaymentCredit(paymentCycle);
 		addPaymentDebit(paymentCycle);
 
@@ -111,27 +113,27 @@ public class PaymentCyclesHelper extends BaseHelper {
 
 			StepLogger.subStep("Type the payment cycle credit value.", po.getCreditValueTextbox(i));
 			sendKeys(po.getCreditValueTextbox(i), credit.getValue());
-			
-			if (i+1 < paymentCycle.getCredits().size()) {
+
+			if (i + 1 < paymentCycle.getCredits().size()) {
 				StepLogger.subStep("Click the payment cycle credit Add button.", po.getCreditAddButton(i));
 				po.getCreditAddButton(i).click();
 			}
 		}
 	}
-	
+
 	private void addPaymentDebit(PaymentCycle paymentCycle) {
 		for (int i = 0; i < paymentCycle.getDebits().size(); i++) {
 			Debits debit = paymentCycle.getDebits().get(i);
 			StepLogger.subStep("Type the payment cycle debit name.", po.getDebitNameTextbox(i));
 			sendKeys(po.getDebitNameTextbox(i), debit.getName());
-			
+
 			StepLogger.subStep("Type the payment cycle debit value.", po.getDebitValueTextbox(i));
 			sendKeys(po.getDebitValueTextbox(i), debit.getValue());
-			
+
 			StepLogger.subStep("Type the payment cycle debit status.", po.getDebitStatusTextbox(i));
 			sendKeys(po.getDebitStatusTextbox(i), debit.getStatus().name());
-			
-			if (i+1 < paymentCycle.getDebits().size()) {
+
+			if (i + 1 < paymentCycle.getDebits().size()) {
 				StepLogger.subStep("Click the payment cycle debit Add button.", po.getDebitAddButton(i));
 				po.getDebitAddButton(i).click();
 			}
